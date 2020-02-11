@@ -34,7 +34,8 @@ module.exports = {
                 "@babel/preset-env",
                 {
                   // 添加babel-polyfill
-                  useBuiltIns: "usage"
+                  useBuiltIns: "usage",
+                  corejs: { version: 3, proposals: true }
                 }
               ]
             ]

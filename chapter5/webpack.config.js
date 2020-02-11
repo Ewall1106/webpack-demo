@@ -19,6 +19,7 @@ module.exports = {
   module: {
     // 定义规则
     rules: [
+      // 使用babel-loader处理es6语法
       {
         // 这是一个正则，所有以js结尾的文件都要给我过这里！！
         test: /\.js$/,
@@ -33,7 +34,7 @@ module.exports = {
               [
                 "@babel/preset-env",
                 {
-                  // 添加babel-polyfill
+                  // 添加polyfill
                   useBuiltIns: "usage",
                   corejs: { version: 3, proposals: true }
                 }
@@ -42,21 +43,45 @@ module.exports = {
           }
         }
       },
+      // 使用file-loader处理文件
       // {
-      //   // 使用file-loader处理文件
       //   test: /\.(png|svg|jpg|gif)$/,
       //   use: ["file-loader"]
       // },
+      // 使用url-loader处理图片资源
       {
-        // 使用url-loader处理图片资源，当图片size小于limit值时会转为DataURL
         test: /\.(png|jpg|gif)$/i,
         use: [
           {
             loader: "url-loader",
             options: {
+              // 当图片size小于limit值时会转为DataURL
               limit: 8192
             }
           }
+        ]
+      },
+      // 处理css
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      // 处理sass
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader", // 将 JS 字符串生成为 style 节点
+          "css-loader", // 将 CSS 转化成 CommonJS 模块
+          "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
+        ]
+      },
+      // 处理less
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader", // 将 JS 字符串生成为 style 节点
+          "css-loader", // 将 CSS 转化成 CommonJS 模块
+          "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
         ]
       }
     ]
