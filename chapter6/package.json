@@ -28,5 +28,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.4"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

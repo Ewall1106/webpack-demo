@@ -64,17 +64,7 @@ module.exports = {
       // 处理css
       {
         test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: [require("autoprefixer")]
-            }
-          }
-        ]
+        use: ["style-loader", "css-loader", "postcss-loader"]
       },
       // 处理sass
       {
@@ -83,7 +73,7 @@ module.exports = {
           "style-loader", // 将JS字符串生成为style节点
           "css-loader", // 将CSS转化成CommonJS模块
           "postcss-loader", // 处理css-如结合autoprefixer自动添加浏览器前缀之类的
-          "sass-loader" // 将Sass编译成CSS，默认使用Node Sass
+          "sass-loader", // 将Sass编译成CSS，默认使用Node Sass
         ]
       },
       // 处理less

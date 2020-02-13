@@ -3,9 +3,9 @@ import { createHeader } from "./header";
 import { createContent } from "./content";
 import { createFooter } from "./footer";
 
-import "./header.css";
-import "./content.scss";
-import "./footer.less";
+import "./styles/header.css";
+import "./styles/content.scss";
+import "./styles/footer.less";
 
 createLogo();
 createHeader();
