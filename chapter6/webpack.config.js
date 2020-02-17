@@ -44,10 +44,10 @@ module.exports = {
         }
       },
       // 使用file-loader处理文件
-      // {
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   use: ["file-loader"]
-      // },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ["file-loader"]
+      },
       // 使用url-loader处理图片资源
       {
         test: /\.(png|jpg|gif)$/i,
@@ -73,7 +73,7 @@ module.exports = {
           "style-loader", // 将JS字符串生成为style节点
           "css-loader", // 将CSS转化成CommonJS模块
           "postcss-loader", // 处理css-如结合autoprefixer自动添加浏览器前缀之类的
-          "sass-loader", // 将Sass编译成CSS，默认使用Node Sass
+          "sass-loader" // 将Sass编译成CSS，默认使用Node Sass
         ]
       },
       // 处理less

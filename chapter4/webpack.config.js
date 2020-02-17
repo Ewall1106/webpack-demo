@@ -42,11 +42,11 @@ module.exports = {
           }
         }
       },
-      // {
-      //   // 使用file-loader处理文件
-      //   test: /\.(png|svg|jpg|gif)$/,
-      //   use: ["file-loader"]
-      // },
+      // 使用file-loader处理文件
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ["file-loader"]
+      },
       {
         // 使用url-loader处理图片资源，当图片size小于limit值时会转为DataURL
         test: /\.(png|jpg|gif)$/i,
