@@ -1,3 +1,6 @@
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // 引入node中的path模块
 const path = require("path");
 
@@ -90,5 +93,16 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
       }
     ]
-  }
+  },
+
+  // 使用plugins的列表
+  plugins: [
+    // 打包前删除掉dist文件避免文件冗余重复
+    new CleanWebpackPlugin(),
+    // 可以为你生成一个HTML文件
+    new HtmlWebpackPlugin({
+      title: "webpack从0到1",
+      template: "./index.html"
+    })
+  ]
 };
