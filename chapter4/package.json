@@ -1,5 +1,5 @@
 {
-  "name": "chapter1",
+  "name": "webpack-easy-demo",
   "version": "1.0.0",
   "description": "webpack从0到1",
   "main": "index.js",
