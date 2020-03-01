@@ -1,7 +1,5 @@
 .DS_Store
 node_modules
-README.md
-readme.md
 # /dist
 
 # local env files
@@ -12,6 +10,7 @@ readme.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+README.*
 
 # Editor directories and files
 .idea
