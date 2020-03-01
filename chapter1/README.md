@@ -1,6 +1,5 @@
-# chapter1：webpack从0到1--开始
-> 这系列文章就是手把手教你如何从零构建一个webpack项目。目的就是为了了解webpack打包怎么玩的，平常项目开发中所用如ES6语法、less、vue是如何被打包的，是一个比较基础的内容，我也是为了总结一下这方面的知识点，梳理一下个人的知识体系而写下这些文字。  
-> 工具及版本：vscode、webpack(v4.41.5)、node(v10.16.0)  
+> 这系列文章就是手把手教你如何从零构建一个webpack项目。目的就是为了了解webpack打包怎么玩的，平常项目开发中所用如ES6语法、less、vue是如何被打包的，是一个比较基础的内容，我也是为了总结一下这方面的知识点，梳理一下个人的知识体系而写下这些文字。
+> 工具及版本：vscode、webpack(v4.41.5)、node(v10.16.0)
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
 ### 1、什么是webpack？
@@ -50,6 +49,8 @@ document.body.appendChild(div);
 
 ### 3、安装webpack
 - 然后我们需要安装下`webpack`，可以全局安装也可以本地安装，我推荐本地安装，这样可以避免与他人合作开发时由于webpack版本号不一致而导致的打包问题。具体：[官网webpack安装](https://webpack.js.org/guides/installation/)
+- 如果你没能绿色上网安装很慢的话可以使用[淘宝镜像](https://npm.taobao.org/)处理一下。
+
 ```
 # 本地
 $ npm install webpack webpack-cli --save-dev
@@ -63,11 +64,17 @@ $ npm install webpack --global
     - 还有一个后缀`--save`可以简写为`-S`，这个会自动把模块和版本号添加到`dependencies`部分。
 
 
-> 在安装一个要打包到生产环境的安装包时，你应该使用`npm install --save`，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用`npm install --save-dev`。请在[npm文档](https://docs.npmjs.com/cli/install)中查找更多信息。  
-> --引用来自[webpack官网教程](https://webpack.js.org/guides/getting-started/#creating-a-bundle)的解释。
+> 在安装一个要打包到生产环境的安装包时，你应该使用`npm install --save`，如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），你应该使用`npm install --save-dev`。请在[npm文档](https://docs.npmjs.com/cli/install)中查找更多信息。
+> —— 引用来自[webpack官网教程](https://webpack.js.org/guides/getting-started/#creating-a-bundle)的解释。
+> 
+> 还有我网上搜的另一个解释我也觉得很直观啊：
+> `--save-dev`是你开发时候依赖的东西，`--save`是你发布之后还依赖的东西。
+> 比如，你写ES6代码，如果你想编译成ES5发布那么babel就是`devDependencies`。
+如果你用了`jQuery`，由于发布之后还是依赖jQuery，所以是`dependencies`。
+> —— 引用[segmentfaul提问](thttps://segmentfault.com/q/1010000005163089)
 
 - 安装完了以后我么就可以看到`package.json`中多出的这几行东西。
-```
+```json
 {
    ...
 +  "devDependencies": {
@@ -86,7 +93,7 @@ $ npm install webpack --global
 ```
 $ npx webpack
 ```
-> 执行`npx webpack`，会将我们的`src/index.js`作为入口文件，然后会新建一个dist文件夹和`dist/main.js`作为输出文件。  
+> 执行`npx webpack`，会将我们的`src/index.js`作为入口文件，然后会新建一个dist文件夹和`dist/main.js`作为输出文件。
 > `npx webpack`简单一点来说就是会去找项目中本地的`./node_modules/.bin/webpack`，然后中执行它。
 - 这时我们就可以看到项目结构下生成了一个`dist`文件夹和打包好的`main.js`文件了。
 
@@ -125,7 +132,7 @@ $ npx webpack --config webpack.config.js
 
 **（3）第三种方式--使用npm脚本**
 - 上面使用`webpack-cli`命令打包的方式不够简洁明了，一般我们会在`package.json`中的`scripts`中定义一条命令。
-```
+```json
 {
 ...
 +  "scripts": {
