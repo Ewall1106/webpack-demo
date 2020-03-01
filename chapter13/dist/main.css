@@ -1,0 +1,19 @@
+.header {
+  background: red;
+  -webkit-box-shadow: 0 0 10px red;
+          box-shadow: 0 0 10px red;
+}
+
+body .content {
+  background: green;
+  -webkit-box-shadow: 0 0 10px green;
+          box-shadow: 0 0 10px green; }
+
+body .footer {
+  background: blue;
+  -webkit-box-shadow: 0 0 10px blue;
+          box-shadow: 0 0 10px blue;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
