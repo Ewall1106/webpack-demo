@@ -40,7 +40,7 @@ $ cd chapterX
 ```
 
 ## 交流
-
+ <img width="200" height="200" src="https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/panda-code.jpg" alt="公众号">
 
 ## License
 
