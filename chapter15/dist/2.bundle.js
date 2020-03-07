@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{107:function(e,n,t){"use strict";function o(){var e=document.createElement("div");e.innerText="尾部块",e.classList.add("footer"),document.body.appendChild(e)}t.r(n),t.d(n,"createFooter",(function(){return o}))}}]);
+//# sourceMappingURL=2.bundle.js.map
