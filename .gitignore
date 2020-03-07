@@ -10,7 +10,6 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-README.md
 
 # Editor directories and files
 .idea
@@ -20,3 +19,19 @@ README.md
 *.njsproj
 *.sln
 *.sw?
+
+# README
+chapter01/README.md
+chapter02/README.md
+chapter03/README.md
+chapter04/README.md
+chapter05/README.md
+chapter06/README.md
+chapter07/README.md
+chapter08/README.md
+chapter09/README.md
+chapter10/README.md
+chapter11/README.md
+chapter12/README.md
+chapter13/README.md
+chapter14/README.md
