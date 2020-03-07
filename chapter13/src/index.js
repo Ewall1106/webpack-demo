@@ -16,7 +16,7 @@ createContent();
 // import()：https://es6.ruanyifeng.com/?search=import&x=0&y=0#docs/module#import
 document.body.addEventListener("click", () => {
   import(/* webpackPrefetch: true */ "./footer.js").then(module => {
-    console.log(module);
+    console.log("webpackPrefetch：", module);
     module.createFooter();
   });
 });
