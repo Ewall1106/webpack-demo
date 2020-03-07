@@ -338,7 +338,7 @@ Object(_content__WEBPACK_IMPORTED_MODULE_4__["createContent"])(); // 动态加�
 
 document.body.addEventListener("click", function () {
   __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./footer.js */ "./src/footer.js")).then(function (module) {
-    console.log(module);
+    console.log("webpackPrefetch：", module);
     module.createFooter();
   });
 }); // 测试devServer.proxy实现数据的代理转发
