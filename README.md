@@ -27,7 +27,7 @@
 
 - [webpack从0到1]()
 
-## 其他相关
+## 相关扩展
 
 - [pandaCli—搭建一个属于自己的vue脚手架]()
 - [pandaUtils-写一个自己的函数库]()
@@ -37,6 +37,7 @@
 ```
 $ git clone git@github.com:Ewall1106/webpack-demo.git
 $ cd chapterX
+$ npm run start/dev/build
 ```
 
 ## 交流
