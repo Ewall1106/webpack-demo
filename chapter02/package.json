@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "Ewall&熊猫",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
