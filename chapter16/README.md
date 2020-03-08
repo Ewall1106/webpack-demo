@@ -1,79 +1,86 @@
-> 关于对开发环境和生产环境做不同的webpack配置。  
+> tree shaking，这个还是一个比较重要的一个东西吧，可以大大的优化你的项目。
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
+### 1、是什么？
+- 我们首先从字面意思上来理解一下，`tree shaking`翻译一下就是摇树罗，摇树的时候就会把不必要的枯枝烂叶给摇下来，同理，到代码中，`tree shaking`就是把没有用到的代码shaking掉。
 
-### 1、缘起
-- 这章我们要做下环境打包的一个区分啊，通过上面很多章的了解学习以后，我们知道，`webpack.config.js`仅仅这一个配置文件已经不能满足我们的需求了，因为开发环境和生产环境配置的内容是不一样的，有这么些异同：
-    - `mode`模式，生产环境需配置为`developmet`，开发则设置为`production`;
-    - `devtool`的`souremap`；
-    - `devServer`，开发环境需要配置跨域代理转发，而生产环境不需要；
-    - 代码分割，开发环境下不需要这个；
-    - `HRM`，生产环境不需要这个，只要开发环境需要，而且这个容易与代码分割产生冲突，如果你生产环境及设置了代码分割又设置了HRM就会失效。
-    - 等等。。。
-- 为了解决这些不相容问题，所以我们需要多个不同环境下的`webpack`配置文件。
+- `tree-shaking`只有使用es6的模块化规范才有效，如果你使用`commonJs`模块化规范是搞不了`tree-shaking`的，为什么？
+> 因为`ES6`模块是运行时加载（静态加载），即可以在编译时就完成模块加载，使得编译时就能确定模块的依赖关系，可以进行可靠的静态分析，这就是`tree shaking`的基础。  
+> 而`CommonsJs`必须在跑起来运行的时候才能确定依赖关系，所以与不能`tree-shaking`。  
+> -- 参考阮大神的讲解[-->Module 的语法
+概述](https://es6.ruanyifeng.com/#docs/module)
 
-### 2、配置
-- 首先我们在`chapter15`目录下新建一个`build`的文件夹，里面新增几个针对不同环境的配置文件。
-```
-  webpack-demo/chapter15
-+ |- /build
-+   |- webpack.common.js
-+   |- webpack.dev.js
-+   |- webpack.prod.js
-  |- src
-  |- index.html
-  |- package.json
-- |- webpack.config.js
-  ...
-```
 
-- 接下来要做的就是要拆分原来的`webpack.config.js`文件了。
-    - `webpack.common.js`就是一些生产和开发环境中都要用的配置。
-    - `webpack.dev.js`就是只需在开发时生效的配置。
-    - `webpack.prod.js`同理。
-- 这些配置我就不浪费篇幅贴代码了，去仓库看一下或者自己抽一下吧，就是开头那些东西。[-->仓库代码](https://github.com/Ewall1106/webpack-demo/tree/master/chapter15)
 
-### 3、合并
-- 把旧的配置文件拆分完了，`common`部分我们还是需要合并的，首先我们要安装一个`webpack-merge`插件，这个插件可以帮我们做这个事情。
-```
-$ npm install webpack-merge --save-dev
-```
+### 2、配置开发环境
+- 如果你看要`tree-shaking`的一个具体的效果，那么你需要在`mode:development`中，因为在生产环境的时候，`webpack`会自动帮我们做`tree-shaking`。
 
-- 然后我们合并配置文件，比如我们在`webpack.dev.js`中要把`common`合并进来：
+- 示例代码可以直接看[官网](https://webpack.js.org/guides/tree-shaking/#conclusion)的，大概就这么几个配置：
+- 设置usedExports为true
 ```javascript
-const merge = require("webpack-merge");
-const commonConfig = require("./webpack.common.js");
-
-const devConfig = { 
-// development环境下的一些webpack配置
-}
-
-module.exports = merge(commonConfig, devConfig);
+mode: 'development',
+optimization: {
+  usedExports: true,
+},
 ```
+- `package.json`中设置下`sideEffects`，也可以是一个数组如`"sideEffects": ["*.css"]`就表示所有引入的`css`文件不做`tree-shaking`。
 
-- 合并`webpack.prod.js`也是这样操作的，就不多说了，然后我们需要去`package.json`中修改下`scripts`脚本。
-```json
+```javascript
 {
   "name": "webpack-easy-demo",
-  "version": "1.0.0",
-  "description": "webpack从0到1",
-  "main": "index.js",
-  "scripts": {
-    "watch": "webpack --watch",
--   "build": "webpack",
--   "start": "webpack-dev-server",
-+   "dev": "webpack-dev-server --config ./build/webpack.dev.js",
-+   "build": "webpack --config ./build/webpack.prod.js"
-  },
-  // ...
++ "sideEffects": false,
 }
 ```
 
-- 然后我们使用两个命令打包就ok了。
-```
-$ npm run dev
-$ npm run build
+- 这里配置好了就ok了，但是有个最大的问题是什么，看官网是这么说的：
+> Ensure no compilers transform your ES2015 module syntax into CommonJS modules (this is the default behavior of the popular Babel preset @babel/preset-env - see the documentation for more details). 要确保没有编译器把es6的语法转换为require这种commonJs的这种写法，但是babel的这个@babel/preset-env配置的默认行为就是如此。
+
+- 我们配置使用[bable配置es6]()的时候就要使用了这个，如此一来，岂不凉了？为了不让`babel`将`es6`的`import/expot`转为`commonJs`规范的`require`写法，我们需要这样：
+```javascript
+{
+   loader: "babel-loader",
+   options: {
+     presets: [
+        [
+          "@babel/preset-env",
+          {
+            useBuiltIns: "usage",
+            corejs: { version: 3, proposals: true },
++           // 禁止将import/export转为require写法
++           modules: false
+          }
+        ]
+      ]
+   }
+}
 ```
 
+
+### 3、配置生产环境
+- 配置生产环境就很简单了。
+    - 将`mode`设置为`production`；
+    - 设置下`sideEffects`;
+    - 设置下`bable`配置`modules: false`。
+
+
 ### 4、小结
-- 本章就是对于不同的webpack环境做不同的配置，可以更好的解耦，方便我们掌控webpack。
+- 根据官网的conclusion总结，开启`tree-shaking`有四点：
+    1. 必须使用es6的模块化规范（`import/export`）;
+    2. 要确保你的编译器不会将es6的`import/expot`转为commonJs规范的`require`写法；（所以我们需要将`@babel/preset-env`的`modules`参数设置为`false`）
+    3. 在`package.json`中添加`sideEffects`告诉webpack哪些是不用`tree-shaking`的文件。
+    4. 模式mode要为`production`，因为`production`会自动使用`terser-webpack-plugin`这个插件来做一些压缩、无用代码的剔除实现`tree-shaking`。
+
+- 这块内容有点东西啊，也不知道我理解的对不对，看看别人的文章吧：
+    - [https://juejin.im/post/5a4dc842518825698e7279a9](https://juejin.im/post/5a4dc842518825698e7279a9)
+    - [https://es6.ruanyifeng.com/#docs/module](https://es6.ruanyifeng.com/#docs/module)
+    - [https://juejin.im/post/5d706172f265da03ca118d28](https://juejin.im/post/5d706172f265da03ca118d28)
+    - [https://juejin.im/post/5dcec27d5188254b0147e619](https://juejin.im/post/5dcec27d5188254b0147e619)
+    - [https://webpack.js.org/guides/tree-shaking/#conclusion](https://webpack.js.org/guides/tree-shaking/#conclusion)
+
+
+
+
+
+
+
+
