@@ -1,3 +1,4 @@
+## webpack从0到1-开始
 > 这系列文章就是手把手教你如何从零构建一个webpack项目。目的就是为了了解webpack打包怎么玩的，平常项目开发中所用如ES6语法、less、vue是如何被打包的，是一个比较基础的内容，我也是为了总结一下这方面的知识点，梳理一下个人的知识体系而写下这些文字。  
 > 工具及版本：vscode、webpack(v4.41.5)、node(v10.16.0)  
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
@@ -73,7 +74,7 @@ $ npm install webpack --global
 > —— 引用[segmentfaul提问](https://segmentfault.com/q/1010000005163089)
 
 - 安装完了以后我么就可以看到`package.json`中多出的这几行东西。
-```json
+```
 {
    ...
 +  "devDependencies": {
@@ -131,7 +132,7 @@ $ npx webpack --config webpack.config.js
 
 **（3）第三种方式--使用npm脚本**
 - 上面使用`webpack-cli`命令打包的方式不够简洁明了，一般我们会在`package.json`中的`scripts`中定义一条命令。
-```json
+```
 {
 ...
 +  "scripts": {
