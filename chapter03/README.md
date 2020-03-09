@@ -1,4 +1,6 @@
-> 讲下webpack中的loaders的概念，然后结合使用babel-loader来对项目中的es6语法做下转换。    
+## webpack从0到1-使用babel打包
+
+> 讲下webpack中的loaders的概念，然后结合使用babel-loader来对项目中的es6语法做下转换。      
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
 
@@ -67,7 +69,7 @@ $ npm run build
 
 不使用babel打包 | 使用babel打包后
 ---|---
-![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter3_1.png)|![3c979d56182b7edc14943aca1bed2ea4.png](https://github.com/Ewall1106/webpack-demo/blob/master/docs/images/chapter3_2.png) 
+![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter3_2.png)|![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter3_1.png) 
 
 
 ### 4、babel-polyfill
@@ -111,12 +113,12 @@ module.exports = {
 ```
 
 - 然后输入`npm run build`打包，就ok了。[webpack中使用polyfill](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack)有几种方式，各种异同大家可以去官网了解下。
-![a4a1600cd7cbcfdf85aad3be01cfea9e.png](evernotecid://D087B462-0000-4378-8205-83468DDE80A9/appyinxiangcom/14800984/ENResource/p2806)
+![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter3_3.png)
 
 ### 5、关于core-js
 - 当你成功的完成了上面的配置步骤，能正常打包也能在浏览器中正常显示，那么我们配置的babel基本能满足你大部分的开发需求了，但是当我们打包的时候应该会碰到几个问题。
 - 第一个就是每次我们打包的时候，虽然打包成功了，但是会看到有`warning`警告。
-![3c30ef0cd86d2a1dc8dd0e4cf36758bc.png](evernotecid://D087B462-0000-4378-8205-83468DDE80A9/appyinxiangcom/14800984/ENResource/p2810)
+![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter3_4.png)
 
 - 阅读并查阅babel官方文档以后发现原来在`Babel 7.4.0`以后，`@babel/polyfill`这个包就会被移除了。官方叫我们直接使用`core-js`来代替`@babel/polyfill`的作用。
 
@@ -170,6 +172,8 @@ module.exports = {
 - 总而言之，用一个牛逼一点的概念来说就是**赋能**，有了这些`loader`来处理各种各样的文件，`webpack`变得强大了，在`webpack`里定义了相应`loader`以后，就能让`webpack`认识并处理它们了。
 - `babel`不建议我们继续使用`@babel/polyfill`这个**垫片**了，推荐直接安装`core-js`包。
 - `loaders`还没完，常用的还是的说说，下节讲下如何处理图片资源。
-
+- 参考链接：
+  - [babel官网](https://babeljs.io/setup#installation)
+  - [webpack官网](https://webpack.js.org/loaders/babel-loader/#usage)
 
 
