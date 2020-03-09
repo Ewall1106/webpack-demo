@@ -25,12 +25,12 @@
 
 ## 文章系列
 
-- [webpack从0到1]()
+- [webpack从0到1](https://www.jianshu.com/nb/41890709)
 
 ## 相关扩展
 
-- [pandaCli—搭建一个属于自己的vue脚手架]()
-- [pandaUtils-写一个自己的函数库]()
+- pandaCli—搭建一个属于自己的vue脚手架（未完成）
+- pandaUtils-写一个自己的函数库（未完成）
 
 ## 开始
 
