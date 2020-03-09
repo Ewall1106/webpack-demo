@@ -1,3 +1,4 @@
+## webpack从0到1-模块化规范
 > 本章在上章内容的基础上简单扩展一下，先说下模块的规范，有哪些标准，然后谈下webpack的loader怎么用以及使用webpack中的babel-loader简单打包一下。      
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
