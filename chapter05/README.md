@@ -96,6 +96,6 @@ $ npm run build
 - `css-loader`使你能够使用类似@import和url(...)的方法实现require/import的功能；`style-loader`可以将编译完成的css挂载到html中。
 - 这两个loader还有许多的配置项可以学习参考，大家可以去下面给的链接去了解。
 
-*参考链接*
-[webpack css-loader](https://webpack.js.org/loaders/css-loader/)  
-[webpack style-loader](https://webpack.js.org/loaders/style-loader/)
+*参考链接:*
+- [webpack css-loader](https://webpack.js.org/loaders/css-loader/)  
+- [webpack style-loader](https://webpack.js.org/loaders/style-loader/)

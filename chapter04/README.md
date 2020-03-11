@@ -54,7 +54,7 @@ $ npm install file-loader --save-dev
 ```
 
 - 使用，在`webpack.config.js`中配置它：
-```
+```javascript
 // ...
  module: {
     rules: [
@@ -93,7 +93,7 @@ $ npm install url-loader --save-dev
 ```
 
 - 修改`webpack.config.js`文件。
-```
+```javascript
 // ...
  module: {
     rules: [
@@ -128,6 +128,6 @@ $ npm install url-loader --save-dev
 - 大概就是这么些东西，使用webpack并使用不同的loader来处理图片资源，还是比较简单的。
 - 下节谈下处理css、less、sass文件。
 
-*参考链接*
+*参考链接:*
 - [webpack官网](https://webpack.js.org/guides/getting-started/#basic-setup)
 - [webpack从0到1系列文章](https://github.com/Ewall1106/webpack-demo)
