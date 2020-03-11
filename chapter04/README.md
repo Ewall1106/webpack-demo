@@ -127,7 +127,6 @@ $ npm install url-loader --save-dev
 ### 4、小结
 - 大概就是这么些东西，使用webpack并使用不同的loader来处理图片资源，还是比较简单的。
 - 下节谈下处理css、less、sass文件。
-
-*参考链接:*
-- [webpack官网](https://webpack.js.org/guides/getting-started/#basic-setup)
-- [webpack从0到1系列文章](https://github.com/Ewall1106/webpack-demo)
+- *参考链接:*  
+[webpack官网](https://webpack.js.org/guides/getting-started/#basic-setup)    
+[webpack从0到1系列文章](https://github.com/Ewall1106/webpack-demo)    

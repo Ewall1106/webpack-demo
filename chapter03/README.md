@@ -172,8 +172,8 @@ module.exports = {
 - 总而言之，用一个牛逼一点的概念来说就是**赋能**，有了这些`loader`来处理各种各样的文件，`webpack`变得强大了，在`webpack`里定义了相应`loader`以后，就能让`webpack`认识并处理它们了。
 - `babel`不建议我们继续使用`@babel/polyfill`这个**垫片**了，推荐直接安装`core-js`包。
 - `loaders`还没完，常用的还是的说说，下节讲下如何处理图片资源。
-- 参考链接：
-  - [babel官网](https://babeljs.io/setup#installation)
-  - [webpack官网](https://webpack.js.org/loaders/babel-loader/#usage)
+- *参考链接：*   
+[babel官网](https://babeljs.io/setup#installation)  
+[webpack官网](https://webpack.js.org/loaders/babel-loader/#usage)  
 
 
