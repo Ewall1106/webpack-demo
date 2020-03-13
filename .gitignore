@@ -21,11 +21,6 @@ yarn-error.log*
 *.sw?
 
 # README
-chapter06/README.md
-chapter07/README.md
-chapter08/README.md
-chapter09/README.md
-chapter10/README.md
 chapter11/README.md
 chapter12/README.md
 chapter13/README.md
