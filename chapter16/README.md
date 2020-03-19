@@ -1,4 +1,5 @@
-> tree shaking，这个还是一个比较重要的一个东西吧，可以大大的优化你的项目。
+## webpack从0到1-tree shaking
+> tree shaking，这个还是一个比较重要的一个东西吧，可以大大的优化你的项目。  
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
 ### 1、是什么？
@@ -33,7 +34,8 @@ optimization: {
 ```
 
 - 这里配置好了就ok了，但是有个最大的问题是什么，看官网是这么说的：
-> Ensure no compilers transform your ES2015 module syntax into CommonJS modules (this is the default behavior of the popular Babel preset @babel/preset-env - see the documentation for more details). 要确保没有编译器把es6的语法转换为require这种commonJs的这种写法，但是babel的这个@babel/preset-env配置的默认行为就是如此。
+> Ensure no compilers transform your ES2015 module syntax into CommonJS modules (this is the default behavior of the popular Babel preset @babel/preset-env - see the documentation for more details).   
+> 要确保没有编译器把es6的语法转换为require这种commonJs的这种写法，但是babel的这个@babel/preset-env配置的默认行为就是如此。
 
 - 我们配置使用[bable配置es6]()的时候就要使用了这个，如此一来，岂不凉了？为了不让`babel`将`es6`的`import/expot`转为`commonJs`规范的`require`写法，我们需要这样：
 ```javascript

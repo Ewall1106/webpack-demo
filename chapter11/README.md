@@ -1,8 +1,9 @@
-> 简单说下代码分割。
+## webpack从0到1-CodeSplitting代码分割
+> 简单说下代码分割。  
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
 ### 1、什么是codeSplitting？
-- 前面[第7章]()讲output多页面相关的内容时，我们将`content.js`、`header.js`、`footer.js`分别打包为三个文件，然后我们在`index.html`中用三个`script`标签引入它们，很明显，上述过程其实就是一种手动式的代码分割。
+- 前面[第7章](https://github.com/Ewall1106/webpack-demo/tree/master/chapter10)讲output多页面相关的内容时，我们将`content.js`、`header.js`、`footer.js`分别打包为三个文件，然后我们在`index.html`中用三个`script`标签引入它们，很明显，上述过程其实就是一种手动式的代码分割。
 - 那这样写有什么好处？
     - 我们可以给`index.html`中引入的三个script标签加个`async`属性，这样的话当我们首次进入页面的时候，就可以异步加载了，比起不做代码分割，可以提高页面渲染速度。
     - 如果我们修改了其中的某一个文件，那么浏览器就只会重新加载那个文件了，其他两个文件会走缓存，这样，又可以进一步的提高加载性能。
@@ -36,7 +37,7 @@ module.exports = {
 - 这个配置是个什么意思？就是说对于公共引用的模块（库）帮我单独提出来做下代码分割。
 
 - 于是乎，当我们`npm run build`打包后，在`dist`文件下就可以看到自动生成了一个`verdor~main.js`文件，打开它，我们就可以看到它帮我们把`src/index.js`中引入的`axios`拎出来了（也就是代码分割了）。
-![1b9b9de41ffd6760a0dd732f55ef3b9b.png](evernotecid://D087B462-0000-4378-8205-83468DDE80A9/appyinxiangcom/14800984/ENResource/p2873)
+![](https://raw.githubusercontent.com/Ewall1106/webpack-demo/master/docs/images/chapter11_1.png) 
 
 - 你可能会问，在`src/index.js`中`import`引入的又不仅仅是`axios`，还有`header.js`、`content.js`、`footer.js`等等，怎么那些没有分割出来单独为一个文件？下文详解。
 
@@ -95,5 +96,5 @@ module.exports = {
 - 其实配置起来这个代码分割还是比较简单的，也就一两行代码就行了，只是里面的所提供可配置项还是比较多的，这时候就只能去查文档了。
 
 *参考链接*
-- [webpack-代码分割](https://webpack.js.org/guides/code-splitting/)
-- [SplitChunksPlugin](https://webpack.js.org/guides/code-splitting/#splitchunksplugin)
+[webpack-代码分割](https://webpack.js.org/guides/code-splitting/)  
+[SplitChunksPlugin](https://webpack.js.org/guides/code-splitting/#splitchunksplugin)  
