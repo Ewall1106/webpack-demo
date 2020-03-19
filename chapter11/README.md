@@ -3,7 +3,7 @@
 > git仓库：[webpack-demo](https://github.com/Ewall1106/webpack-demo)
 
 ### 1、什么是codeSplitting？
-- 前面[第7章](https://github.com/Ewall1106/webpack-demo/tree/master/chapter10)讲output多页面相关的内容时，我们将`content.js`、`header.js`、`footer.js`分别打包为三个文件，然后我们在`index.html`中用三个`script`标签引入它们，很明显，上述过程其实就是一种手动式的代码分割。
+- 前面[第7章](https://github.com/Ewall1106/webpack-demo/tree/master/chapter07)讲output多页面相关的内容时，我们将`content.js`、`header.js`、`footer.js`分别打包为三个文件，然后我们在`index.html`中用三个`script`标签引入它们，很明显，上述过程其实就是一种手动式的代码分割。
 - 那这样写有什么好处？
     - 我们可以给`index.html`中引入的三个script标签加个`async`属性，这样的话当我们首次进入页面的时候，就可以异步加载了，比起不做代码分割，可以提高页面渲染速度。
     - 如果我们修改了其中的某一个文件，那么浏览器就只会重新加载那个文件了，其他两个文件会走缓存，这样，又可以进一步的提高加载性能。
