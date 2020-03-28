@@ -27,10 +27,10 @@
 
 - [webpack从0到1](https://www.jianshu.com/nb/41890709)
 
-## 相关扩展
+## 相关推荐
 
-- [pandaCli—搭建一个属于自己的vue脚手架（未完成）]()
-- [pandaUtils-写一个自己的函数库（未完成）]()
+- [pandaUtils-写一个自己的函数库](https://github.com/Ewall1106/panda-utils)
+- [手把手教你搭建vue小商城](https://github.com/Ewall1106/mall)
 
 ## 开始
 
