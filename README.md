@@ -17,11 +17,11 @@
   </a>
 </p>
 
-## Introduction
+## 介绍
 
-> 本项目仅仅是个人学习webpack的一些知识点梳理和复盘总结分享。  
-> 其次由于水平不是很高，所以我推荐你可能直接阅读webpack官网将其作为第一手学习资料更好，或者你也可以结合我的文章来做为一个侧面参考的内容。
-> 最后本系列分享文章中的内容和代码很多都借鉴自[webpack官网](https://webpack.js.org/)，如有雷同，那绝不是巧合。
+> 本项目仅仅是个人学习 webpack 的一些知识点梳理和复盘总结分享。
+
+> 最后本系列分享文章中的内容和代码很多都借鉴自[webpack 官网](https://webpack.js.org/)，如有雷同，那绝不是巧合。
 
 ## 文章系列
 
@@ -29,16 +29,7 @@
 
 ## 相关推荐
 
-- [pandaUtils-写一个自己的函数库](https://github.com/Ewall1106/panda-utils)
-- [手把手教你搭建vue小商城](https://github.com/Ewall1106/mall)
-
-## 开始
-
-```
-$ git clone git@github.com:Ewall1106/webpack-demo.git
-$ cd chapterX
-$ npm run start/dev/build
-```
+- [Panda-vue-h5](https://github.com/Ewall1106/mall)
 
 ## License
 
